@@ -1,0 +1,104 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/dmmono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1f2be0;
+    }
+    .h1-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+      background-image:
+        linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+    .h1-rule {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1f2be0;
+      transform-origin: left center;
+    }
+    #h1-rule-top { top: 58px; }
+    #h1-rule-bot { top: 1020px; }
+    #h1-tag {
+      position: absolute;
+      left: 77px;
+      top: 92px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+    }
+    #h1-head {
+      position: absolute;
+      left: 77px;
+      top: 300px;
+      width: 1400px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 150px;
+      line-height: 1.0;
+      letter-spacing: -0.005em;
+    }
+    .h1-line { display: block; overflow: hidden; padding-bottom: 14px; }
+    .h1-word { display: inline-block; margin-right: 0.22em; }
+    .h1-ital { font-style: italic; }
+    #h1-qr {
+      position: absolute;
+      left: 1660px;
+      top: 720px;
+      width: 160px;
+      height: 160px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0;
+      box-shadow: 0 0 0 3px #f0ebde;
+      background: #f0ebde;
+    }
+    #h1-qr i { display: block; background: rgba(31, 43, 224, 0.1); }
+    #h1-qr i.on { background: #1f2be0; }
+  </style>
+
+  <div data-hf-id="hf-1jcu" id="root" data-composition-id="01-hook" data-width="1920" data-height="1080" data-duration="3.5">
+    <div data-hf-id="hf-5vpw" id="h1-ground" class="h1-ground clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+    <div data-hf-id="hf-7oq4" id="h1-rule-top" class="h1-rule"></div>
+    <div data-hf-id="hf-sosi" id="h1-rule-bot" class="h1-rule"></div>
+    <div data-hf-id="hf-z639" id="h1-tag">RFC 2606 / RESERVED</div>
+    <div data-hf-id="hf-9ear" id="h1-head">
+      <span data-hf-id="hf-si2i" class="h1-line" data-layout-allow-overflow=""><span data-hf-id="hf-um24" class="h1-word">Every</span><span data-hf-id="hf-urst" class="h1-word">doc</span><span data-hf-id="hf-rj7m" class="h1-word">needs</span></span>
+      <span data-hf-id="hf-56hq" class="h1-line" data-layout-allow-overflow=""><span data-hf-id="hf-dzm4" class="h1-word h1-ital">an</span><span data-hf-id="hf-8n2z" class="h1-word h1-ital">example.</span></span>
+    </div>
+    <div data-hf-id="hf-f7f8" id="h1-qr"></div>
+  </div>
+
+  <script>
+    (function () {
+      var bits = "1110011110100101111010111001100110110011101011110100101011100111";
+      var qr = document.getElementById("h1-qr");
+      for (var i = 0; i < 64; i++) {
+        var c = document.createElement("i");
+        if (bits[i] === "1") c.className = "on";
+        qr.appendChild(c);
+      }
+      var tl = gsap.timeline({ paused: true });
+      tl.fromTo("#h1-rule-top", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0);
+      tl.fromTo("#h1-rule-bot", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.08);
+      tl.fromTo("#h1-tag", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.25);
+      tl.fromTo("#h1-head .h1-line:first-child .h1-word", { yPercent: 110 }, { yPercent: 0, duration: 0.6, ease: "power3.out", stagger: 0.14 }, 0.2);
+      tl.fromTo("#h1-head .h1-line:last-child .h1-word", { yPercent: 110 }, { yPercent: 0, duration: 0.65, ease: "power3.out", stagger: 0.16 }, 1.1);
+      tl.fromTo("#h1-qr", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.0);
+      tl.fromTo("#h1-qr i", { opacity: 0 }, { opacity: 1, duration: 0.02, stagger: { each: 0.006, from: "edges", grid: [8, 8] } }, 2.0);
+      window.__timelines["01-hook"] = tl;
+    })();
+  </script>
+</template>

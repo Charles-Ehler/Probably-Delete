@@ -1,0 +1,165 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/hanken-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/dmmono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1f2be0;
+    }
+    .v2-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+      background-image:
+        linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+    .v2-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1f2be0;
+    }
+    #v2-hair-top { top: 58px; }
+    #v2-hair-bot { top: 1020px; }
+    #v2-topbar {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      top: 120px;
+      height: 130px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-bottom: 14px;
+    }
+    #v2-topbar-rule {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      top: 250px;
+      height: 3px;
+      background: #1f2be0;
+      transform-origin: left center;
+    }
+    #v2-index {
+      font-family: "Newsreader", serif;
+      font-size: 96px;
+      line-height: 0.95;
+    }
+    #v2-label {
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+    }
+    .v2-row {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 190px;
+      display: grid;
+      grid-template-columns: 120px 560px 1fr 80px;
+      align-items: center;
+    }
+    #v2-row-1 { top: 270px; }
+    #v2-row-2 { top: 460px; }
+    #v2-row-3 { top: 650px; }
+    .v2-num {
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.05em;
+    }
+    .v2-name {
+      font-family: "Newsreader", serif;
+      font-size: 96px;
+      line-height: 1.05;
+    }
+    .v2-desc {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-size: 40px;
+      line-height: 1.3;
+      color: #5560e5;
+    }
+    .v2-mark {
+      font-family: "DM Mono", monospace;
+      font-size: 52px;
+      text-align: right;
+    }
+    .v2-div {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: rgba(31, 43, 224, 0.18);
+      transform-origin: left center;
+    }
+    #v2-div-1 { top: 460px; }
+    #v2-div-2 { top: 650px; }
+    #v2-div-3 { top: 840px; }
+  </style>
+
+  <div data-hf-id="hf-sq4p" id="root" data-composition-id="02-value" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-cr4o" id="v2-ground" class="v2-ground clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+    <div data-hf-id="hf-3922" id="v2-hair-top" class="v2-hair"></div>
+    <div data-hf-id="hf-pmrg" id="v2-hair-bot" class="v2-hair"></div>
+
+    <div data-hf-id="hf-8w8e" id="v2-topbar">
+      <div data-hf-id="hf-849w" id="v2-index">02</div>
+      <div data-hf-id="hf-e2nh" id="v2-label">WHY IT WORKS</div>
+    </div>
+    <div data-hf-id="hf-7s75" id="v2-topbar-rule"></div>
+
+    <div data-hf-id="hf-v0pw" id="v2-row-1" class="v2-row">
+      <div data-hf-id="hf-cwf8" class="v2-num">01</div>
+      <div data-hf-id="hf-wrv4" class="v2-name">Free to use</div>
+      <div data-hf-id="hf-5bvh" class="v2-desc">No permission needed</div>
+      <div data-hf-id="hf-mg9r" class="v2-mark">✓</div>
+    </div>
+    <div data-hf-id="hf-pq5c" id="v2-div-1" class="v2-div"></div>
+
+    <div data-hf-id="hf-5w7j" id="v2-row-2" class="v2-row">
+      <div data-hf-id="hf-bpi5" class="v2-num">02</div>
+      <div data-hf-id="hf-au80" class="v2-name">Reserved</div>
+      <div data-hf-id="hf-h86o" class="v2-desc">Held by IANA for documentation</div>
+      <div data-hf-id="hf-f4gv" class="v2-mark">✓</div>
+    </div>
+    <div data-hf-id="hf-ye17" id="v2-div-2" class="v2-div"></div>
+
+    <div data-hf-id="hf-1y3i" id="v2-row-3" class="v2-row">
+      <div data-hf-id="hf-c3t6" class="v2-num">03</div>
+      <div data-hf-id="hf-2ra9" class="v2-name">Safe</div>
+      <div data-hf-id="hf-1gel" class="v2-desc">Never a real business</div>
+      <div data-hf-id="hf-eq5u" class="v2-mark">✓</div>
+    </div>
+    <div data-hf-id="hf-ufx6" id="v2-div-3" class="v2-div"></div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      tl.fromTo("#v2-index", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#v2-label", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+      tl.fromTo("#v2-topbar-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.05);
+
+      var starts = [0.6, 1.4, 2.2];
+      for (var i = 0; i < 3; i++) {
+        var n = i + 1;
+        var t = starts[i];
+        tl.fromTo("#v2-row-" + n + " .v2-num", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, t);
+        tl.fromTo("#v2-row-" + n + " .v2-name", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, t + 0.05);
+        tl.fromTo("#v2-row-" + n + " .v2-desc", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, t + 0.2);
+        tl.fromTo("#v2-div-" + n, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, t + 0.1);
+      }
+      tl.fromTo(".v2-mark", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.18 }, 2.6);
+      window.__timelines["02-value"] = tl;
+    })();
+  </script>
+</template>
