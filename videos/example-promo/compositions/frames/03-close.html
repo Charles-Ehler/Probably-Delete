@@ -1,0 +1,149 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/dmmono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1f2be0;
+    }
+    .c3-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+      background-image:
+        linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+    .c3-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1f2be0;
+    }
+    #c3-hair-top { top: 58px; }
+    #c3-hair-bot { top: 1020px; }
+    #c3-content { position: absolute; inset: 0; }
+    #c3-glitch {
+      position: absolute;
+      left: 1420px;
+      top: 60px;
+      width: 420px;
+      height: 958px;
+      transform-origin: center bottom;
+    }
+    .c3-step {
+      position: absolute;
+      right: 0;
+      background: repeating-linear-gradient(90deg, #1f2be0 0 2px, transparent 2px 8px);
+    }
+    #c3-step-1 { top: 0; height: 240px; width: 140px; }
+    #c3-step-2 { top: 240px; height: 240px; width: 240px; }
+    #c3-step-3 { top: 480px; height: 240px; width: 330px; }
+    #c3-step-4 { top: 720px; height: 238px; width: 420px; }
+    #c3-qr {
+      position: absolute;
+      left: 1590px;
+      top: 300px;
+      width: 170px;
+      height: 170px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      background: #f0ebde;
+      box-shadow: 0 0 0 4px #f0ebde;
+    }
+    #c3-qr i { display: block; background: rgba(31, 43, 224, 0.1); }
+    #c3-qr i.on { background: #1f2be0; }
+    #c3-mark-wrap {
+      position: absolute;
+      left: 77px;
+      top: 330px;
+      width: 1300px;
+      height: 240px;
+      overflow: hidden;
+    }
+    #c3-mark {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 200px;
+      line-height: 1.1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    #c3-tag {
+      position: absolute;
+      left: 82px;
+      top: 610px;
+      font-family: "DM Mono", monospace;
+      font-size: 40px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    #c3-caret {
+      display: inline-block;
+      width: 20px;
+      height: 44px;
+      margin-left: 6px;
+      vertical-align: -6px;
+      background: #1f2be0;
+    }
+  </style>
+
+  <div data-hf-id="hf-5gar" id="root" data-composition-id="03-close" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-9k70" id="c3-ground" class="c3-ground clip" data-start="0" data-duration="3.5" data-track-index="0"></div>
+    <div data-hf-id="hf-8t9m" id="c3-hair-top" class="c3-hair"></div>
+    <div data-hf-id="hf-jeng" id="c3-hair-bot" class="c3-hair"></div>
+    <div data-hf-id="hf-offj" id="c3-content">
+      <div data-hf-id="hf-8yvj" id="c3-glitch">
+        <div data-hf-id="hf-exaq" id="c3-step-1" class="c3-step"></div>
+        <div data-hf-id="hf-az6p" id="c3-step-2" class="c3-step"></div>
+        <div data-hf-id="hf-7zx4" id="c3-step-3" class="c3-step"></div>
+        <div data-hf-id="hf-41t3" id="c3-step-4" class="c3-step"></div>
+      </div>
+      <div data-hf-id="hf-ans9" id="c3-qr"></div>
+      <div data-hf-id="hf-qimx" id="c3-mark-wrap" data-layout-allow-overflow=""><div data-hf-id="hf-uz9w" id="c3-mark">example.com</div></div>
+      <div data-hf-id="hf-z020" id="c3-tag"><span data-hf-id="hf-h53x" id="c3-tag-text"></span><span data-hf-id="hf-no6y" id="c3-caret"></span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var bits = "1110011110100101111010111001100110110011101011110100101011100111";
+      var qr = document.getElementById("c3-qr");
+      for (var i = 0; i < 64; i++) {
+        var c = document.createElement("i");
+        if (bits[i] === "1") c.className = "on";
+        qr.appendChild(c);
+      }
+      var full = "Use it in your docs.";
+      var tagEl = document.getElementById("c3-tag-text");
+      var typer = { n: 0 };
+
+      var tl = gsap.timeline({ paused: true });
+      tl.fromTo("#c3-glitch", { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power3.out" }, 0);
+      tl.fromTo("#c3-mark", { xPercent: -102 }, { xPercent: 0, duration: 0.9, ease: "power3.out" }, 0.15);
+      tl.fromTo("#c3-tag", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 1.0);
+      tl.fromTo(
+        typer,
+        { n: 0 },
+        {
+          n: full.length,
+          duration: 0.8,
+          ease: "none",
+          onUpdate: function () { tagEl.textContent = full.slice(0, Math.round(typer.n)); }
+        },
+        1.0
+      );
+      tl.fromTo("#c3-qr", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.4);
+      tl.fromTo("#c3-caret", { opacity: 1 }, { opacity: 0, duration: 0.05 }, 2.4);
+      tl.fromTo("#c3-content", { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in" }, 3.1);
+      window.__timelines["03-close"] = tl;
+    })();
+  </script>
+</template>
